@@ -1,4 +1,4 @@
-// moving particles
+// blazing particles
 
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
@@ -12,20 +12,7 @@ window.addEventListener('resize', function() {
     canvas.height = window.innerHeight;
 })
 
-const mouse = {
-    x: undefined,
-    y: undefined,
-}
-
-canvas.addEventListener('click', function(event) {
-    mouse.x = event.x;
-    mouse.y = event.y;
-})
-
-canvas.addEventListener('mousemove', function(event) {
-    mouse.x = event.x;
-    mouse.y = event.y;
-})
+let counter = 1;
 
 class Particle {
     constructor() {
@@ -37,9 +24,10 @@ class Particle {
         this.color = [64, Math.random() * 64, Math.random() * 64];
     }
 
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+    update(counter) {
+        this.x += 1.5 * Math.cos(Math.random() * counter / 10);
+        this.y += 1.5 * Math.sin(Math.random() * counter / 10);
+        console.log(counter);
     }
 
     draw() {
@@ -52,26 +40,27 @@ class Particle {
 
 
 function init() {
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 100; i++) {
         particlesArray.push(new Particle());
     }
 }
 
 
-function handleParticles() {
+function handleParticles(counter) {
     for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
+        particlesArray[i].update(counter);
         particlesArray[i].draw();
     }
 }
 
 
 
-function animate() {
-
+function animate(counter) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleParticles();
+    handleParticles(counter);
     requestAnimationFrame(animate);
+    counter++;
 }
+
 init();
-animate();
+animate(counter);
