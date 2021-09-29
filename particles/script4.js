@@ -30,18 +30,16 @@ class Line {
             0,
             ${Math.floor(255 - 42.5 * 10*Math.random())},
             ${Math.floor(255 - 42.5 * 1*Math.random())})`;
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 1;
         
-        ctx.moveTo(this.x, this.y)
-        ctx.lineTo(this.x + this.length, this.y + this.length);
-        ctx.stroke();
+        ctx.moveTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
+        ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.25 * this.length)
+        ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.75 * this.length)
+        ctx.lineTo(this.x + 0.00 * this.length, this.y + 1.00 * this.length)
+        ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.75 * this.length)
+        ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.25 * this.length)
+        ctx.lineTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
 
-        ctx.moveTo(this.x, this.y)
-        ctx.lineTo(this.x - this.length, this.y + this.length);
-        ctx.stroke();
-
-        ctx.moveTo(this.x - this.length, this.y + this.length)
-        ctx.lineTo(this.x + this.length, this.y + this.length);
         ctx.stroke();
     }
 }
@@ -50,7 +48,7 @@ class Line {
 
 
 function init() {
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 10; i++) {
         linesArray.push(new Line());
     }
 }
