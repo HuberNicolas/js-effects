@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const pentagonArray = [];
+const pentagonGrid = [];
 
 
 window.addEventListener('resize', function() {
@@ -36,7 +37,6 @@ class Pentagon {
         ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.25 * this.length)
         ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.75 * this.length)
         ctx.lineTo(this.x + 0.00 * this.length, this.y + 1.00 * this.length)
-
         ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.75 * this.length)
         ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.25 * this.length)
         ctx.lineTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
@@ -46,19 +46,32 @@ class Pentagon {
 }
 
 
-
+function grid(length) {
+    for (let i = 0; i < length; i++) {
+        if (i % 2 === 0) {
+            for (let j = 0; j < length; j++) {
+                pentagonGrid.push(new Pentagon(i, j * 128));
+            }
+        } else {
+            for (let j = 0; j < length; j++) {
+                pentagonGrid.push(new Pentagon(i, j * 128));
+            }
+        }
+    }
+}
 
 function init() {
     for (let i = 0; i < 10; i++) {
         pentagonArray.push(new Pentagon(i, i));
     }
+    grid(6);
 }
 
 
 function handleParticles() {
-    for (let i = 0; i < pentagonArray.length; i++) {
-        pentagonArray[i].update();
-        pentagonArray[i].draw();
+    for (let i = 0; i < pentagonGrid.length; i++) {
+        pentagonGrid[i].update();
+        pentagonGrid[i].draw();
     }
 }
 
