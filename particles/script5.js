@@ -4,7 +4,7 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const linesArray = [];
+const pentagonArray = [];
 
 
 window.addEventListener('resize', function() {
@@ -14,9 +14,9 @@ window.addEventListener('resize', function() {
 
 class Pentagon {
     constructor(x, y) {
-        this.x = x * 150;
+        this.x = x * 128 + 64;
         this.y = y;
-        this.length = 100;
+        this.length = 128;
         this.color = [64, Math.random() * 64, Math.random() * 64];
     }
 
@@ -36,6 +36,7 @@ class Pentagon {
         ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.25 * this.length)
         ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.75 * this.length)
         ctx.lineTo(this.x + 0.00 * this.length, this.y + 1.00 * this.length)
+
         ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.75 * this.length)
         ctx.lineTo(this.x - 0.50 * this.length, this.y + 0.25 * this.length)
         ctx.lineTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
@@ -49,15 +50,15 @@ class Pentagon {
 
 function init() {
     for (let i = 0; i < 10; i++) {
-        linesArray.push(new Pentagon(i, i));
+        pentagonArray.push(new Pentagon(i, i));
     }
 }
 
 
 function handleParticles() {
-    for (let i = 0; i < linesArray.length; i++) {
-        linesArray[i].update();
-        linesArray[i].draw();
+    for (let i = 0; i < pentagonArray.length; i++) {
+        pentagonArray[i].update();
+        pentagonArray[i].draw();
     }
 }
 
