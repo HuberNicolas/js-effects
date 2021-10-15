@@ -88,7 +88,15 @@ function init() {
     }
     */
     for (let i = 0; i < col; i++) {
-        pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, topBottomBorder))
+        for (let j = 0; j < row; j++) {
+            if (!(j % 2)) {
+                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, j * LENGHT + topBottomBorder))
+            } else {
+                pentagonArray.push(new Pentagon(i * LENGHT + 2 * leftRightBorder, j * LENGHT + topBottomBorder))
+            }
+
+        }
+
     }
 
 }
