@@ -42,7 +42,7 @@ function initGrid() {
 
 
 // CLASS
-class Square {
+class Pentagon {
     constructor(x, y) {
         this.x = x
         this.y = y
@@ -60,12 +60,14 @@ class Square {
             0,
             ${Math.floor(255 - 42.5 * 10*Math.random())},
             ${Math.floor(255 - 42.5 * 1*Math.random())})`;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1
 
         ctx.moveTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
+        ctx.lineTo(this.x + 0.50 * this.length, this.y - 0.25 * this.length)
         ctx.lineTo(this.x + 1.00 * this.length, this.y + 0.00 * this.length)
-        ctx.lineTo(this.x + 1.00 * this.length, this.y + 1.00 * this.length)
-        ctx.lineTo(this.x + 0.00 * this.length, this.y + 1.00 * this.length)
+        ctx.lineTo(this.x + 1.00 * this.length, this.y + 0.50 * this.length)
+        ctx.lineTo(this.x + 0.50 * this.length, this.y + 0.75 * this.length)
+        ctx.lineTo(this.x + 0.00 * this.length, this.y + 0.50 * this.length)
         ctx.lineTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
 
         ctx.stroke();
@@ -75,6 +77,7 @@ class Square {
 
 // ANIMATION
 function init() {
+    /*
     // left to right := columns
     for (let i = 0; i < col; i++) {
         // top to bottom := row
@@ -83,12 +86,17 @@ function init() {
             squareGrid.push(new Square(i * LENGHT + leftRightBorder, j * LENGHT + topBottomBorder))
         }
     }
+    */
+    for (let i = 0; i < col; i++) {
+        pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, topBottomBorder))
+    }
+
 }
 
 function handleParticles() {
-    for (let i = 0; i < squareGrid.length; i++) {
-        squareGrid[i].update();
-        squareGrid[i].draw();
+    for (let i = 0; i < pentagonArray.length; i++) {
+        pentagonArray[i].update();
+        pentagonArray[i].draw();
     }
 }
 
