@@ -74,13 +74,13 @@ for (let row = 1; row < 4; row++) {
 //drawPent(100, 200);
 
 for (let j = 1; j < 10; j++) { // j goes from top to bottom
-    for (let i = 1; i < 10; i++) { // i goes form left to right
+    for (let i = 1; i < 6; i++) { // i goes form left to right
         if (j % 2) {
             ctx.strokeStyle = 'blue';
-            drawPent(i * LENGTH, j * LENGTH)
+            drawPent(i * LENGTH, 0.75 * j * LENGTH)
         } else {
-            ctx.strokeStyle = 'red';
-            drawPent(i * LENGTH + 0.5 * LENGTH, j * LENGTH - 0.25 * LENGTH)
+            ctx.strokeStyle = 'blue';
+            drawPent(i * LENGTH + 0.5 * LENGTH, 0.75 * j * LENGTH)
         }
     }
 }
