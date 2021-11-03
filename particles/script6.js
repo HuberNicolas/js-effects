@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // CONSTANTES
-const LENGHT = 64 // length of square
+const LENGHT = 128 // length of square
 
 
 // VARIABLES 
@@ -99,12 +99,13 @@ function init() {
 
     for (let i = 0; i < col; i++) {
         for (let j = 0; j < row; j++) {
-            if (j % 2) {
-                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder + 0.5 * LENGHT, 0.75 * j * LENGHT + topBottomBorder))
-            } else {
-                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, 0.75 * j * LENGHT + topBottomBorder))
+            if (i >= 0.4 * col && i <= 0.6 * col && j >= 0.4 * row && j <= 0.6 * row) {
+                if (j % 2) {
+                    pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder + 0.5 * LENGHT, 0.75 * j * LENGHT + topBottomBorder))
+                } else {
+                    pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, 0.75 * j * LENGHT + topBottomBorder))
+                }
             }
-
         }
 
     }
