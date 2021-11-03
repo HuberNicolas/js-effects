@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // CONSTANTES
-const LENGTH = 64
+const LENGTH = 128
 
 // VARIABLES 
 
@@ -73,8 +73,8 @@ for (let row = 1; row < 4; row++) {
 //drawRect(100, 100);
 //drawPent(100, 200);
 
-for (let j = 1; j < 10; j++) { // j goes from top to bottom
-    for (let i = 1; i < 6; i++) { // i goes form left to right
+for (let j = 1; j <= 4; j++) { // j goes from top to bottom
+    for (let i = 1; i <= 5; i++) { // i goes form left to right
         if (j % 2) {
             ctx.strokeStyle = 'blue';
             drawPent(i * LENGTH, 0.75 * j * LENGTH)

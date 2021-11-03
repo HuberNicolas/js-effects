@@ -34,7 +34,7 @@ function initGrid() {
     colRemainder = canvas.width % LENGHT
     leftRightBorder = colRemainder / 2
 
-    row = Math.floor(canvas.height / LENGHT)
+    row = Math.floor(canvas.height / LENGHT) * (1 / 0.75)
     rowRemainder = canvas.height % LENGHT
     topBottomBorder = rowRemainder / 2
     console.log(col + " columns (left to right) and " + row + " rows (top to bottom)")
@@ -55,11 +55,7 @@ class Pentagon {
     }
 
     draw() {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgb(
-            0,
-            ${Math.floor(255 - 42.5 * 10*Math.random())},
-            ${Math.floor(255 - 42.5 * 1*Math.random())})`;
+        ctx.strokeStyle = 'green'
         ctx.lineWidth = 1
 
         ctx.moveTo(this.x + 0.00 * this.length, this.y + 0.00 * this.length)
@@ -87,12 +83,26 @@ function init() {
         }
     }
     */
+    /*
+     for (let i = 0; i < col; i++) {
+         for (let j = 0; j < row; j++) {
+             if (!(j % 2)) {
+                 pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, j * LENGHT + topBottomBorder))
+             } else {
+                 pentagonArray.push(new Pentagon(i * LENGHT + 2 * leftRightBorder, j * LENGHT + topBottomBorder))
+             }
+
+         }
+
+     }
+     */
+
     for (let i = 0; i < col; i++) {
         for (let j = 0; j < row; j++) {
-            if (!(j % 2)) {
-                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, j * LENGHT + topBottomBorder))
+            if (j % 2) {
+                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder + 0.5 * LENGHT, 0.75 * j * LENGHT + topBottomBorder))
             } else {
-                pentagonArray.push(new Pentagon(i * LENGHT + 2 * leftRightBorder, j * LENGHT + topBottomBorder))
+                pentagonArray.push(new Pentagon(i * LENGHT + leftRightBorder, 0.75 * j * LENGHT + topBottomBorder))
             }
 
         }
